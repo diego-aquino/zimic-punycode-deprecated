@@ -1,0 +1,26 @@
+{
+  "name": "zimic-example-with-openapi-typegen",
+  "version": "0.0.0",
+  "private": false,
+  "packageManager": "pnpm@9.12.3",
+  "scripts": {
+    "test": "vitest",
+    "test:turbo": "dotenv -v CI=true -- pnpm run test run",
+    "types:check": "tsc --noEmit",
+    "typegen:github": "dotenv -c development -- pnpm typegen:github-no-env",
+    "typegen:github-no-env": "zimic typegen openapi $GITHUB_OPENAPI_SPEC_URL --output ./src/types/github/typegen/generated.ts --service-name GitHub --filter-file ./src/types/github/typegen/filters.txt --no-comments"
+  },
+  "dependencies": {
+    "fastify": "5.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/supertest": "^6.0.2",
+    "@vitest/spy": "^2.1.1",
+    "dotenv-cli": "^7.4.2",
+    "supertest": "^7.0.0",
+    "typescript": "^5.6.2",
+    "vitest": "2.1.1",
+    "zimic": "latest"
+  }
+}
